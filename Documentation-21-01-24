@@ -1,0 +1,66 @@
+                                                  UBUNTU SERVER LTS 24.04
+*************************************************************************************************************************************************************
+21-05-24
+
+1]Installed on virtualbox -21 May 2024 12:51:01
+2]Installed net-tools
+3]created a snapshot
+4]configured virtualbox network configuration to Bridged adapter
+5]THE KEYBOARD LAYOUT IS BRITISH SO THERE WAS A SLIGHT CONFUSION WITH THE @ SYMBOL.BUT NONETHELESS I DECIDED TO CONTINUE USING IT.
+6]changes the password
+7]unsuccessfull in changing keyboard layout(No idea why)
+8]installed cockpit and coonfigured it
+9]succesfully established connection with my local machine using ssh and ansible.
+
+	sudo systemctl enable ssh
+  ansible all -m ping
+	
+10]9:48pm - rollbacked to fresh version due to some issues which couldnt be resolved.[installation of cockpit]
+11]9:52pm -Installed cockpit
+	 --sudo apt install cockpit 
+12]I think cockpit is causing issues..after installing my connection to the internet is disconnected.
+	     
+  rollback-- sudo apt remove cockpit
+	sudo apt autoremove --to remove unnecessary packages
+13]after removing cockpit my server ran fine
+14]Changed the keyboard layout from UK to US
+
+	sudo chmod 777 /etc/defaults/keyboard
+	sudo nano /etc/defaults/keyboard
+
+	set XKBLAYOUT to  "us"
+	save the file
+	
+	sudo dpkg-reconfigure keyboard-configuration
+	reboot system
+
+15]Changed my password
+16]installed apache2 service
+	sudo systemctl install apache2.
+17]I DIDNT SET A STATIC IP ADDRESS AS I HAVE TO SWITCH BETWEEN NETWORKS
+
+18]started apache service
+
+	sudo systemctl start apache2
+
+IT WORKSSSSS.....
+
+19]Error checking in log files about cockpit-- 
+	 sudo grep -i "cockpit" /var/log/syslog 
+
+Returned the log files
+
+	2024-05-21T16:22:09.695376+00:00 twoside adduser[1797]: Adding system user `cockpit-ws' (UID 110) ...   
+	2024-05-21T16:22:09.699009+00:00 twoside adduser[1797]: Adding new group 	`cockpit-ws' (GID 111) ...    
+  2024-05-21T16:22:09.735570+00:00 twoside adduser[1797]: Adding new user `cockpit-ws' (UID 110) with group `cockpit-ws' ...                                                                                      
+  2024-05-21T16:22:09.843000+00:00 twoside adduser[1818]: Adding new group `cockpit-wsinstance' (GID 112) ...                                                                                                     	
+  2024-05-21T16:22:10.468364+00:00 twoside systemd[1]: Starting cockpit.socket - Cockpit Web Service Socket...                                                                                                    	
+  2024-05-21T16:22:10.540325+00:00 twoside systemd[1]: Starting cockpit-motd.service - Cockpit motd updater service...                                                                                            	
+  Cockpit motd updater service.                                                                                           
+  2024-05-21T16:24:42.522992+00:00 twoside systemd[1]: 	
+	twoside systemd[1]: Listening on cockpit.socket - Cockpit Web Service Socket.                                                                                                  
+  2024-05-21T16:26:42.306871+00:00 twoside systemd[1]: cockpit-motd.service: Deactivated successfully.   
+        2024-05-21T16:26:42.306926+00:00 twoside systemd[1]: Finished cockpit-	systemd[1]: Stopping cockpit.socket - Cockpit Web Service Socket...                                                                                                    	2024-05-21T16:28:11.274719+00:00 twoside systemd[1]: cockpit.socket: Deactivated successfully.          
+        2024-05-21T16:28:11.275314+00:00 twoside systemd[1]: Closed cockpit.socket -Cockpit Web Service Socket.
+
+
