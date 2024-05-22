@@ -13,11 +13,11 @@
 9]succesfully established connection with my local machine using ssh and ansible.
 
 	sudo systemctl enable ssh
-  ansible all -m ping
+        ansible all -m ping
 	
 10]9:48pm - rollbacked to fresh version due to some issues which couldnt be resolved.[installation of cockpit]
 11]9:52pm -Installed cockpit
-	 --sudo apt install cockpit 
+	sudo apt install cockpit 
 12]I think cockpit is causing issues..after installing my connection to the internet is disconnected.
 	     
   rollback-- sudo apt remove cockpit
@@ -43,24 +43,23 @@
 
 	sudo systemctl start apache2
 
-IT WORKSSSSS.....
+        IT WORKSSSSS.....
 
 19]Error checking in log files about cockpit-- 
 	 sudo grep -i "cockpit" /var/log/syslog 
 
 Returned the log files
 
-	2024-05-21T16:22:09.695376+00:00 twoside adduser[1797]: Adding system user `cockpit-ws' (UID 110) ...   
-	2024-05-21T16:22:09.699009+00:00 twoside adduser[1797]: Adding new group 	`cockpit-ws' (GID 111) ...    
+  2024-05-21T16:22:09.695376+00:00 twoside adduser[1797]: Adding system user `cockpit-ws' (UID 110) ...   
+  2024-05-21T16:22:09.699009+00:00 twoside adduser[1797]: Adding new group 	`cockpit-ws' (GID 111) ...    
   2024-05-21T16:22:09.735570+00:00 twoside adduser[1797]: Adding new user `cockpit-ws' (UID 110) with group `cockpit-ws' ...                                                                                      
   2024-05-21T16:22:09.843000+00:00 twoside adduser[1818]: Adding new group `cockpit-wsinstance' (GID 112) ...                                                                                                     	
   2024-05-21T16:22:10.468364+00:00 twoside systemd[1]: Starting cockpit.socket - Cockpit Web Service Socket...                                                                                                    	
   2024-05-21T16:22:10.540325+00:00 twoside systemd[1]: Starting cockpit-motd.service - Cockpit motd updater service...                                                                                            	
   Cockpit motd updater service.                                                                                           
-  2024-05-21T16:24:42.522992+00:00 twoside systemd[1]: 	
-	twoside systemd[1]: Listening on cockpit.socket - Cockpit Web Service Socket.                                                                                                  
+  2024-05-21T16:24:42.522992+00:00 twoside systemd[1]: 	twoside systemd[1]: Listening on cockpit.socket - Cockpit Web Service Socket.                                                                                                  
   2024-05-21T16:26:42.306871+00:00 twoside systemd[1]: cockpit-motd.service: Deactivated successfully.   
-        2024-05-21T16:26:42.306926+00:00 twoside systemd[1]: Finished cockpit-	systemd[1]: Stopping cockpit.socket - Cockpit Web Service Socket...                                                                                                    	2024-05-21T16:28:11.274719+00:00 twoside systemd[1]: cockpit.socket: Deactivated successfully.          
-        2024-05-21T16:28:11.275314+00:00 twoside systemd[1]: Closed cockpit.socket -Cockpit Web Service Socket.
+  2024-05-21T16:26:42.306926+00:00 twoside systemd[1]: Finished cockpit-	systemd[1]: Stopping cockpit.socket - Cockpit Web Service Socket...                                                                                                    	2024-05-21T16:28:11.274719+00:00 twoside systemd[1]: cockpit.socket: Deactivated successfully.          
+  2024-05-21T16:28:11.275314+00:00 twoside systemd[1]: Closed cockpit.socket -Cockpit Web Service Socket.
 
 
